@@ -20,7 +20,7 @@ class BaseLLM(ABC):
             config: LLM configuration containing provider details, API keys, etc.
         """
         self.config = config
-        self.client = self._create_client()
+        self.client = None  # Will be created when needed
     
     @abstractmethod
     def generate(self, prompt: str, **kwargs) -> str:
@@ -42,6 +42,8 @@ class BaseLLM(ABC):
     def _create_client(self) -> Any:
         """Create and configure the API client for this LLM provider.
         
+        This method is called lazily when the client is first needed.
+        
         Returns:
             The configured client object for making API calls
             
@@ -49,6 +51,16 @@ class BaseLLM(ABC):
             ConfigurationError: If the configuration is invalid
         """
         pass
+    
+    def _get_client(self) -> Any:
+        """Get the API client, creating it if necessary.
+        
+        Returns:
+            The configured client object
+        """
+        if self.client is None:
+            self.client = self._create_client()
+        return self.client
     
     def validate_config(self) -> bool:
         """Validate that the LLM configuration is correct.
