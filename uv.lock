@@ -1165,6 +1165,19 @@ test = [
 ]
 
 [package.dev-dependencies]
+dev = [
+    { name = "black", version = "24.8.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "black", version = "25.11.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.9.*'" },
+    { name = "black", version = "25.12.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+    { name = "flake8", version = "5.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.8.1'" },
+    { name = "flake8", version = "7.1.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.8.1' and python_full_version < '3.9'" },
+    { name = "flake8", version = "7.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
+    { name = "mypy", version = "1.14.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "mypy", version = "1.19.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
+    { name = "pre-commit", version = "3.5.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "pre-commit", version = "4.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.9.*'" },
+    { name = "pre-commit", version = "4.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+]
 test = [
     { name = "hypothesis", version = "6.113.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
     { name = "hypothesis", version = "6.141.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.9.*'" },
@@ -1193,6 +1206,12 @@ requires-dist = [
 provides-extras = ["test", "dev"]
 
 [package.metadata.requires-dev]
+dev = [
+    { name = "black", specifier = ">=24.8.0" },
+    { name = "flake8", specifier = ">=5.0.4" },
+    { name = "mypy", specifier = ">=1.14.1" },
+    { name = "pre-commit", specifier = ">=3.5.0" },
+]
 test = [
     { name = "hypothesis", specifier = ">=6.113.0" },
     { name = "pytest", specifier = ">=8.3.5" },

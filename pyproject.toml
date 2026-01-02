@@ -99,6 +99,12 @@ warn_unreachable = true
 strict_equality = true
 
 [dependency-groups]
+dev = [
+    "black>=24.8.0",
+    "flake8>=5.0.4",
+    "mypy>=1.14.1",
+    "pre-commit>=3.5.0",
+]
 test = [
     "hypothesis>=6.113.0",
     "pytest>=8.3.5",
